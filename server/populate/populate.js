@@ -8,6 +8,10 @@ const levels = require("./levels.json");
 const positions = require("./positions.json");
 const EmployeeModel = require("../db/employee.model");
 
+const LocationsModel = require("../db/locations.model");
+const countrys = require("./country.json");
+const cities = require("./city.json");
+
 const mongoUrl = process.env.MONGO_URL;
 
 if (!mongoUrl) {
@@ -24,16 +28,31 @@ const populateEmployees = async () => {
     name,
     level: pick(levels),
     position: pick(positions),
+    worklog:[]
   }));
 
   await EmployeeModel.create(...employees);
   console.log("Employees created");
 };
 
+const populateLocations = async () => {
+  await LocationsModel.deleteMany({});
+
+const locations = countrys.map((country,index) =>({
+  city: cities[index],
+  country,
+  
+}))
+
+  await LocationsModel.create(...locations)
+  console.log("Locations Created")
+}
 const main = async () => {
   await mongoose.connect(mongoUrl);
 
   await populateEmployees();
+
+  await populateLocations();
 
   await mongoose.disconnect();
 };

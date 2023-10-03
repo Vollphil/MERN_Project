@@ -8,10 +8,22 @@ import ErrorPage from "./Pages/ErrorPage";
 import EmployeeList from "./Pages/EmployeeList";
 import EmployeeCreator from "./Pages/EmployeeCreator";
 import EmployeeUpdater from "./Pages/EmployeeUpdater";
+import Companies from "./Pages/Companies"
+import SearchEmployeeName from "./Pages/SearchEmployeeName";
+import AddSalary from "./Pages/Salary";
+import FavortieBook from "./Pages/FavoriteBook";
+import ArmorUpdate from "./Pages/ArmorCreate";
+import UpdateArmor from "./Pages/UpdateArmor";
+import CreateNotes from "./Pages/Notes";
+import AddWorkLogEntries from "./Pages/WorkLog";
+import WorklogEntries from "./Pages/WorkLogEntries";
+import CreateMeal from "./Pages/CreateMeal";
+
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
 import FormTest from "./Pages/FormTest";
+import EquipmentCreator from "./Pages/EquipmentCreator";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +44,10 @@ const router = createBrowserRouter([
         element: <EmployeeUpdater />,
       },
       {
+      path:"/armorUpdate/:id",
+      element: <UpdateArmor />
+      },
+      {
         path: "/table-test",
         element: <TableTest />,
       },
@@ -39,6 +55,49 @@ const router = createBrowserRouter([
         path: "/form-test",
         element: <FormTest />,
       },
+      {
+        path:"/EquipmentCreate",
+        element: <EquipmentCreator />
+
+      },
+      {
+      path:"/Companies",
+      element:<Companies />
+      },
+      {
+        path:"/SearchEmployeeName",
+        element:<SearchEmployeeName />
+      },
+      {
+        path:"/AddSalary",
+        element:<AddSalary />
+      },
+      {
+      path:"/favortieBook",
+      element: <FavortieBook /> 
+      },
+      {
+        path:"/Armors",
+        element:<ArmorUpdate />
+      },
+      {
+        path:"/employee/:employeeId/notes",
+        element:<CreateNotes />
+      },
+      {
+        path:"/AddWorkLog",
+        element:<AddWorkLogEntries/>
+      },
+      {
+        path:"/WorkLogEntries/:employeeId",
+        element:<WorklogEntries />
+      },
+      {
+        path:"/CreateMeal",
+        element: <CreateMeal />
+        
+      }
+     
     ],
   },
 ]);
